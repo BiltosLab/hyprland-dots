@@ -27,13 +27,13 @@ read -n1 -rep 'Would you like to install the packages? (y,n)' INST
 if [[ $INST == "Y" || $INST == "y" ]]; then
     paru -S --noconfirm xdg-desktop-portal-hyprland
     check_command_status "paru -S xdg-desktop-portal-hyprland-git"
-    paru -S hyprpicker-git waybar-hyprland-git dunst nwg-look wf-recorder wlogout wlsunset
-    paru -S colord ffmpegthumbnailer gnome-keyring grimblast-git gtk-engine-murrine imagemagick kvantum pamixer playerctl polkit-kde-agent qt5-quickcontrols qt5-quickcontrols2 qt5-wayland qt6-wayland swaybg ttf-font-awesome tumbler ttf-jetbrains-mono ttf-icomoon-feather xdg-desktop-portal-hyprland-git xdotool xwaylandvideobridge-cursor-mode-2-git cliphist qt5-imageformats qt5ct
-    paru -S btop cava neofetch noise-suppression-for-voice rofi-lbonn-wayland-git rofi-emoji starship zsh viewnior ocs-url
-    paru -S brave-bin file-roller noto-fonts noto-fonts-cjk noto-fonts-emoji thunar thunar-archive-plugin 
-    paru -S code code-features code-marketplace
-    paru -S catppuccin-gtk-theme-macchiato catppuccin-gtk-theme-mocha papirus-icon-theme sddm-git swaylock-effects-git kvantum kvantum-theme-catppuccin-git
-    paru -S obs-studio-rc ffmpeg-obs cef-minimal-obs-rc-bin pipewire pipewire-alsa pipewire-audio pipewire-pulse pipewire-jack wireplumber gst-plugin-pipewire pavucontrol
+    paru -S --noconfirm hyprpicker-git waybar-hyprland-git dunst nwg-look wf-recorder wlogout wlsunset
+    paru -S --noconfirm colord ffmpegthumbnailer gnome-keyring grimblast-git gtk-engine-murrine imagemagick kvantum pamixer playerctl polkit-kde-agent qt5-quickcontrols qt5-quickcontrols2 qt5-wayland qt6-wayland swaybg ttf-font-awesome tumbler ttf-jetbrains-mono ttf-icomoon-feather xdg-desktop-portal-hyprland-git xdotool xwaylandvideobridge-cursor-mode-2-git cliphist qt5-imageformats qt5ct
+    paru -S --noconfirm btop cava neofetch noise-suppression-for-voice rofi-lbonn-wayland-git rofi-emoji starship zsh viewnior ocs-url
+    paru -S --noconfirm brave-bin file-roller noto-fonts noto-fonts-cjk noto-fonts-emoji thunar thunar-archive-plugin 
+    paru -S --noconfirm code code-features code-marketplace
+    paru -S --noconfirm catppuccin-gtk-theme-macchiato catppuccin-gtk-theme-mocha papirus-icon-theme sddm-git swaylock-effects-git kvantum kvantum-theme-catppuccin-git
+    paru -S --noconfirm obs-studio-rc ffmpeg-obs cef-minimal-obs-rc-bin pipewire pipewire-alsa pipewire-audio pipewire-pulse pipewire-jack wireplumber gst-plugin-pipewire pavucontrol rsync wezterm kitty
 
      # Clean out other portals
      
@@ -61,6 +61,16 @@ if [[ $WIFI == "Y" || $WIFI == "y" ]]; then
     sleep 3
 fi
 
+### Fonts ###
+read -n1 -rep 'Would you like to install fonts? (y,n)' FONTS
+if [[ $FONTS == "Y" || $FONTS == "y" ]]; then
+mkdir -p $HOME/Downloads/nerdfonts/
+cd $HOME/Downloads/
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.1/CascadiaCode.zip
+unzip '*.zip' -d $HOME/Downloads/nerdfonts/
+rm -rf *.zip
+sudo cp -R $HOME/Downloads/nerdfonts/ /usr/share/fonts/
+fi
 
 ### Script is done ###
 echo -e "Script had completed.\n"
